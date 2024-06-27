@@ -188,7 +188,7 @@ const testCases = [
         reqObject: {
             language: 'ruby',
             script:
-                'print "hello world"'
+                'print "hello world"',
         },
         expectedResponse: {
             val: 'hello world',
@@ -203,7 +203,7 @@ const testCases = [
             script:
                 'user_input = gets.chomp\n' +
                 'puts user_input',
-            stdin: '10\n'
+            stdin: '10\n',
         },
         expectedResponse: {
             val: '10\n',
@@ -294,6 +294,123 @@ const testCases = [
         },
         expectedResponse: {
             val: {},
+            status: 200,
+            error: 0,
+        },
+    },
+    // #Task :-  test cases
+    // PHP test cases
+    {
+        name: 'php : hello world',
+        reqObject: {
+            language: 'php',
+            script: '<?php echo "hello world"; ?>',
+        },
+        expectedResponse: {
+            val: 'hello world',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'php : print stdin',
+        reqObject: {
+            language: 'php',
+            script: '<?php while ($line = fgets(STDIN)) { echo $line; } ?>',
+            stdin: '1 2 3',
+        },
+        expectedResponse: {
+            val: '1 2 3\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'php : addition',
+        reqObject: {
+            language: 'php',
+            script: '<?php echo 2 + 3; ?>',
+        },
+        expectedResponse: {
+            val: '5',
+            status: 200,
+            error: 0,
+        },
+    },
+
+    // Go test cases
+    {
+        name: 'go : hello world',
+        reqObject: {
+            language: 'go',
+            script: 'package main\nimport "fmt"\nfunc main() {\n    fmt.Println("hello world")\n}',
+        },
+        expectedResponse: {
+            val: 'hello world\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'go : print stdin',
+        reqObject: {
+            language: 'go',
+            script: 'package main\nimport (\n    "bufio"\n    "fmt"\n    "os"\n)\nfunc main() {\n    scanner := bufio.NewScanner(os.Stdin)\n    for scanner.Scan() {\n        fmt.Println(scanner.Text())\n    }\n}',
+            stdin: '1\n2\n3\n',
+        },
+        expectedResponse: {
+            val: '1\n2\n3\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'go : addition',
+        reqObject: {
+            language: 'go',
+            script: 'package main\nimport "fmt"\nfunc main() {\n    fmt.Println(2 + 3)\n}',
+        },
+        expectedResponse: {
+            val: '5\n',
+            status: 200,
+            error: 0,
+        },
+    },
+
+    // Swift test cases
+    {
+        name: 'swift : hello world',
+        reqObject: {
+            language: 'swift',
+            script: 'print("hello world")',
+        },
+        expectedResponse: {
+            val: 'hello world\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'swift : print stdin',
+        reqObject: {
+            language: 'swift',
+            script: 'import Foundation\nlet input = readLine()\nif let input = input {\n    print(input)\n}',
+            stdin: '1 2 3',
+        },
+        expectedResponse: {
+            val: '1 2 3\n',
+            status: 200,
+            error: 0,
+        },
+    },
+    {
+        name: 'swift : addition',
+        reqObject: {
+            language: 'swift',
+            script: 'print(2 + 3)',
+        },
+        expectedResponse: {
+            val: '5\n',
             status: 200,
             error: 0,
         },
