@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/execute';
+const API_URL = 'https://laughing-dollop-q55rgr6465rh4r57-3000.app.github.dev/api/execute';
 
 export const executeCode = async (data) => {
     try {

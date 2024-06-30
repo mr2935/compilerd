@@ -64,7 +64,7 @@ const LANGUAGES_CONFIG = {
         run: './solution',
         timeout: 4,
         filename: 'solution.go',
-        memory: ALLOWED_RAM * ONE_MB,
+        memory: ALLOWED_RAM * ONE_MB * 2,
     },
     [SWIFT]: {
         compile: 'swiftc -o solution solution.swift',

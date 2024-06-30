@@ -15,12 +15,16 @@ const App = () => {
     const requestData = {
       language,
       script: code,
-      stdin: '', // Add stdin if required
+      // stdin: '1', // Add stdin if required
     };
 
     try {
       const response = await executeCode(requestData);
-      setOutput(response.val);
+      if (response.error === 0) {
+        setOutput(response.output);
+      } else {
+        setOutput(`Error: ${response.errorMessage}\nCompile Message: ${response.compile_message}`);
+      }
     } catch (error) {
       setOutput(`Error: ${error.message}`);
     }
